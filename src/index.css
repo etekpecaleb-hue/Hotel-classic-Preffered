@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+/* ---------- Classic Royal Palette ---------- */
+:root {
+  --ivory: #f5efe4;
+  --cream: #ece3d1;
+  --champagne: #d9c9a3;
+  --gold: #b8935a;
+  --gold-bright: #d4af37;
+  --bronze: #7a5a2f;
+  --ink: #1a1612;
+  --charcoal: #2a2520;
+  --claret: #5a1f1f;
+  --emerald: #1f3b2d;
+}
+
+/* ---------- Typography ---------- */
+.font-display {
+  font-family: "Cinzel", "Playfair Display", serif;
+  letter-spacing: 0.08em;
+}
+.font-serif-classic {
+  font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+}
+.font-italiana {
+  font-family: "Italiana", "Cinzel", serif;
+  letter-spacing: 0.12em;
+}
+
+html,
+body {
+  background: var(--ink);
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, rgba(184, 147, 90, 0.08), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(90, 31, 31, 0.08), transparent 60%),
+    #0f0c09;
+}
+
+/* ---------- Decorative ---------- */
+.gold-gradient {
+  background: linear-gradient(
+    135deg,
+    #7a5a2f 0%,
+    #b8935a 25%,
+    #f2d98a 50%,
+    #b8935a 75%,
+    #7a5a2f 100%
+  );
+}
+.gold-text {
+  background: linear-gradient(
+    135deg,
+    #c9a96a 0%,
+    #f2d98a 35%,
+    #b8935a 60%,
+    #d4af37 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  max-width: 120px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ---------- Royal Grid ---------- */
+.royal-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn-royal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  font-family: "Cinzel", serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: transparent;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+.btn-royal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #b8935a, #d4af37);
+  transform: translateY(101%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: -1;
+}
+.btn-royal:hover::before {
+  transform: translateY(0);
+}
+.btn-royal:hover {
+  color: var(--ink);
+}
+
+.btn-gold {
+  padding: 1rem 2.25rem;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: linear-gradient(135deg, #d4af37, #b8935a);
+  border: 1px solid #f2d98a;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.45);
+}
+
+/* ---------- Reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Card Hover ---------- */
+.room-card {
+  position: relative;
+  overflow: hidden;
+  background: #14110d;
+  border: 1px solid rgba(184, 147, 90, 0.2);
+  transition: border-color 0.5s ease, transform 0.5s ease;
+}
+.room-card:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-4px);
+}
+.room-card img {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease;
+}
+.room-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* ---------- Gallery ---------- */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 8, 5, 0.75) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.gallery-item:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Carousel (Swiper overrides) ---------- */
+.royal-swiper .swiper-pagination-bullet {
+  background: var(--gold);
+  opacity: 0.4;
+  width: 30px;
+  height: 2px;
+  border-radius: 0;
+}
+.royal-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--gold-bright);
+}
+.royal-swiper .swiper-button-next,
+.royal-swiper .swiper-button-prev {
+  color: var(--gold);
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+.royal-swiper .swiper-button-next:hover,
+.royal-swiper .swiper-button-prev:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+.royal-swiper .swiper-button-next::after,
+.royal-swiper .swiper-button-prev::after {
+  font-size: 16px;
+}
+
+/* ---------- Inputs ---------- */
+.royal-input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: rgba(20, 17, 13, 0.6);
+  border: 1px solid rgba(184, 147, 90, 0.3);
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.royal-input:focus {
+  outline: none;
+  border-color: var(--gold-bright);
+  background: rgba(20, 17, 13, 0.85);
+}
+.royal-input::placeholder {
+  color: rgba(245, 239, 228, 0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-family: "Cinzel", serif;
+}
+
+/* ---------- Marquee ---------- */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+/* ---------- Hero canvas ---------- */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0806;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#7a5a2f, #b8935a);
+  border-radius: 4px;
+}
+
+/* ---------- Utility ---------- */
+.text-shadow-royal {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 0, 0, 0.5);
+}
+.border-gold-subtle {
+  border-color: rgba(184, 147, 90, 0.25);
+}
+.bg-royal-dark {
+  background: #0f0c09;
+}
+.bg-royal-panel {
+  background: linear-gradient(180deg, rgba(26, 22, 18, 0.9), rgba(15, 12, 9, 0.95));
+  border: 1px solid rgba(184, 147, 90, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- Nav link underline ---------- */
+.nav-link {
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 1px;
+  width: 0;
+  background: var(--gold-bright);
+  transition: width 0.4s ease, left 0.4s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+}
